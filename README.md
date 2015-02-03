@@ -73,6 +73,7 @@ Current baked in validators are
 
 * not_empty
 * be_string
+* required
 
 ## Contributing
 

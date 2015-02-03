@@ -4,6 +4,16 @@ require "./lib/is_hash_valid/validators"
 describe "Validators" do
   subject { class ValidatorsSpec; include IsHashValid::Validators end.new }
 
+  describe "required" do
+    describe "given a empty string" do
+      it { expect(subject.required("")).to eq(true) }
+    end
+
+    describe "given nil" do
+      it { expect(subject.required(nil)).to eq(false) }
+    end
+  end
+
   describe "not_empty" do
     describe "given a empty string" do
       it { expect(subject.not_empty("")).to eq(false) }

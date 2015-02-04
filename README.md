@@ -51,7 +51,7 @@ valid.valid? #true
 valid.errors # {}
 
 invalid.valid? #false
-invalid.errors # { errors: { name: [ "Must be of royalty "], age: "No minors allowed" } }
+invalid.errors # { errors: { name: [ "Must be of royalty "], age: ["No minors allowed"] } }
 
 ```
 

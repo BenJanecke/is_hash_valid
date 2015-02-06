@@ -4,9 +4,9 @@ module IsHashValid
   class Validator
     include IsHashValid::Validators
 
-    def initialize(hash, validators)
+    def initialize(hash, validators_for_feilds)
       @hash = hash
-      @validators = validators
+      @validators_for_feilds = validators_for_feilds
       @errors = { }
       validate
     end
@@ -20,11 +20,14 @@ module IsHashValid
     end
 
     def validate
-      @validators.each do |field, validators|
+      @validators_for_feilds.each do |field, validators|
         validators.each do |validator, message|
-          if !self.send(validator.to_sym, @hash[field.to_sym])
-            @errors[field] = [] unless @errors.has_key? field
-            @errors[field].push(message)
+          unless self.send(validator.to_sym, @hash[field.to_sym])
+            if @errors.has_key? field
+              @errors[field].push(message)
+            else
+              @errors[field] = [message]
+            end
           end
         end
       end

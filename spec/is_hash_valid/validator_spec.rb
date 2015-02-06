@@ -9,8 +9,8 @@ describe IsHashValid::Validator do
       expect(subject.instance_variable_get(:@hash)).to eq({})
     end
 
-    it "expects @validators to be set" do
-      expect(subject.instance_variable_get(:@validators)).to eq({})
+    it "expects @validators_for_feilds to be set" do
+      expect(subject.instance_variable_get(:@validators_for_feilds)).to eq({})
     end
   end
 
